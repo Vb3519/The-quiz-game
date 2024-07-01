@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgb(51, 51, 51);
+    gap: 2rem;   
+}
+
+/* ---------------------------- Стартовая страница ---------------------------- */
+.start-page {
+    width: 700px;
+    height: 500px;
+    border: 3px solid rgb(71, 114, 194);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: rgb(20, 13, 119);
+    margin-top: 4rem;
+}
+
+.start-page > h1 {
+    color: rgb(212, 212, 212);
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+}
+
+.start-page__btn {
+    width: 100px;
+    height: 40px;
+    font-size: 1rem;
+    background: rgb(71, 114, 194);
+    border: 2px solid rgb(189, 189, 189);
+    font: italic 1rem sans-serif;
+    font-family: "Open Sans", sans-serif; /* для изменения шрифта - импортируй стили с гугл.фонтс */
+    border-radius: 0.3rem;
+    color: rgb(32, 32, 32);
+}
+
+.start-page__btn:hover {
+    cursor: pointer;
+    background: rgb(80, 130, 221);
+}
+
+.start-page__btn:active {
+    cursor: pointer;
+    background: rgb(102, 151, 243);
+    border: 2px solid rgb(218, 218, 218);
+}
+
+/* ---------------------------- Страница c вопросом и ответами ---------------------------- */
+
+.game-question-page { /* одинаковые стили с ".start-page" */
+    width: 700px;
+    height: 500px;
+    border: 3px solid rgb(71, 114, 194);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: rgb(20, 13, 119);    
+}
+
+.game-question-page__question-body {
+    color: rgb(212, 212, 212);
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    /* margin-bottom: auto; */
+    padding: 0.5rem;
+    
+}
+
+.game-question-page__answers {
+    display: flex;   
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.answers-body-row {
+    display: flex;
+    flex-direction: column;    
+    gap: 0.5rem;
+    color: white;
+    font-size: 1.3rem;
+    color: rgb(212, 212, 212);    
+}
+
+.answers-body-row__answer {
+    padding: 2rem;
+    border: 2px solid rgb(71, 114, 194);
+    border-radius: 0.5rem;
+}
+
+.answers-body-row__answer:hover {
+    cursor: pointer;
+    background: rgb(206, 206, 3);
+    color: black;
+}
+
+.answers-body-row__answer:Active {
+    cursor: pointer;
+    background: rgb(231, 231, 3);
+    color: black;
+}
+
+
+.game-question-page__counter-and-btn {    
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-left: auto;
+    margin-right: 2rem;
+    margin-top: auto;
+    margin-bottom: 2rem;
+    gap: 2rem;
+
+}
+
+.counter-and-btn-container__counter {    
+    font-size: 1.3rem;
+    color: rgb(212, 212, 212);
+    font-family: "Montserrat", sans-serif;
+}
+
+.counter-and-btn-container__confirm-answer-btn {
+    width: 140px;
+    height: 50px;
+    font-size: 1rem;
+    background: rgb(71, 114, 194);
+    border: 2px solid rgb(189, 189, 189);
+    font: italic 1rem sans-serif;
+    font-family: "Open Sans", sans-serif;
+    border-radius: 0.3rem;
+    color: rgb(32, 32, 32);
+}
+
+.counter-and-btn-container__confirm-answer-btn:hover {
+    cursor: pointer;
+    /* background: rgb(80, 130, 221); */
+    background: rgb(206, 206, 3);
+    color: black;
+}
+
+.counter-and-btn-container__confirm-answer-btn:active {
+    cursor: pointer;
+    background: rgb(231, 231, 3);
+    border: 2px solid rgb(218, 218, 218);
+}

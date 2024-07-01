@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My quiz game</title>
+    <!-- Ссылка на библиотеку fontawesome (символы, кнопки, значки и т.д.) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Стартовая страница -->
+    <div class="start-page">
+        <h1 class="start-page__heading">Если готовы начать квиз - нажмите кнопку ниже</h1>
+        <button class="start-page__btn">Старт</button>
+    </div>
+
+    <!-- Страница с вопросом, ответами; счетчиком вопросов; таймером (60 секунд); -->
+    <div class="game-question-page">
+        <!-- Вопрос -->
+        <div class="game-question-page__question-body">
+            Пример вопроса на какую-либо тему Пример вопроса на какую-либо тему Пример вопроса на какую-либо тему
+        </div>
+
+        <!-- Ответы -->
+        <div class="game-question-page__answers answers-body">
+            <div class="answers-body-row">
+                <div class="answers-body-row__answer">
+                    Вариант ответа 1
+                </div>
+                <div class="answers-body-row__answer">
+                    Вариант ответа 2
+                </div>
+            </div>
+            <div class="answers-body-row">
+                <div class="answers-body-row__answer">
+                    Вариант ответа 3
+                </div>
+                <div class="answers-body-row__answer">
+                    Вариант ответа 4
+                </div>
+            </div>
+        </div>
+
+        <div class="game-question-page__counter-and-btn counter-and-btn-container">
+            <div class="counter-and-btn-container__counter">
+                Вопросов пройдено: 0
+            </div>
+
+            <!-- Кнопка подтверждения выбранного ответа -->
+            <button class="counter-and-btn-container__confirm-answer-btn confirm-btn">
+                Подтверждаю <br> ответ
+            </button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
