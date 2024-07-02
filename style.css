@@ -98,6 +98,7 @@ body {
     padding: 2rem;
     border: 2px solid rgb(71, 114, 194);
     border-radius: 0.5rem;
+    text-align: center;
 }
 
 .answers-body-row__answer:hover {
@@ -109,6 +110,11 @@ body {
 .answers-body-row__answer:Active {
     cursor: pointer;
     background: rgb(231, 231, 3);
+    color: black;
+}
+
+.selected-answer {
+    background: rgb(206, 206, 3);
     color: black;
 }
 
