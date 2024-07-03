@@ -194,7 +194,17 @@ document.addEventListener('click', playQuizGame);
 
 // Концовка игры (победа) ^_^ :
 document.querySelector('.counter-and-btn-container__confirm-answer-btn').addEventListener('click', function endOfQuiz() {
-    if (correctAnswerCounter >= questionsArr.length) {
+    let selectedAnswerBtn = document.querySelector('.selected-answer'); // выбранный ответ
+    let quizAnswer = selectedAnswerBtn.innerText;
+
+    if ( (correctAnswerCounter >= questionsArr.length) && (
+        (quizAnswer == 'Виктор')
+        || (quizAnswer == 'Москва')
+        || (quizAnswer == 'Семь')
+        || (quizAnswer == '35')
+        || (quizAnswer == 'JavaScript')
+    )
+    ) {
         let finalPage = document.querySelector('.final-page');
         finalPage.style.display = 'flex';
 
