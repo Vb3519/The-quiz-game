@@ -135,6 +135,7 @@ body {
     font-size: 1.3rem;
     color: rgb(212, 212, 212);
     font-family: "Montserrat", sans-serif;
+    display: none;
 }
 
 .counter-and-btn-container__confirm-answer-btn {
