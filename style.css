@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; // Эта стилизация нужна на старте для адекватной отрисовки страниц квиза
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     background: rgb(51, 51, 51);
     gap: 2rem;   
 }
@@ -12,7 +12,10 @@ body {
 /* ---------------------------- Стартовая страница ---------------------------- */
 .start-page {
     /* width: 700px; убрано, чтоб сделать адаптивный дизайн */
-    padding: 2rem;
+    max-width: 730px;
+    min-width: 270px;
+    margin: auto;
+    padding: 1.5rem;
     height: 500px;
     border: 3px solid rgb(71, 114, 194);
     border-radius: 0.5rem;
@@ -59,7 +62,10 @@ body {
 .game-question-page { /* одинаковые стили с ".start-page" */
     display: none; /* изначально меню квиза спрятано */
     /* width: 700px; */
-    padding: 2rem;
+    max-width: 600px;
+    min-width: 270px;
+    margin: auto;
+    padding: 1.5rem;    
     height: 500px;
     border: 3px solid rgb(71, 114, 194);
     border-radius: 0.5rem;
@@ -102,7 +108,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 1.5rem;
     border: 2px solid rgb(71, 114, 194);
     border-radius: 0.5rem;
     /* text-align: center; */
@@ -183,7 +189,10 @@ body {
 .final-page {
     display: none; /* изначально меню квиза спрятано */
     /* width: 700px; */
-    padding: 2rem;
+    max-width: 600px;
+    min-width: 270px;
+    margin: auto;
+    padding: 1.5rem;    
     height: 500px;
     border: 3px solid rgb(71, 114, 194);
     border-radius: 0.5rem;
