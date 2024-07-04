@@ -23,7 +23,7 @@ const correctAnswersArr = ['Виктор', 'Москва', 'Семь', '35', 'Ja
 
 // ------------------------------------------- ФУНКЦИИ ------------------------------------------- //
 
-// Отрисовка счетка вопросов (правильных ответов) (функция №1):
+// Отрисовка счетчика вопросов (правильных ответов) (функция №1):
 function renderQuestionCounter() {
     let counterElem = document.querySelector('.counter-and-btn-container__counter');
     counterElem.style.display = 'block';
@@ -205,9 +205,26 @@ function endOfQuizWin() {
         let gamePage = document.querySelector('.game-question-page');
         let finalPage = document.querySelector('.final-page');
 
-        setTimeout(() => finalPage.style.display = 'flex', 2000); // задержка в 2 секунды при отрисовке финальной странички
-        setTimeout(() => gamePage.style.display = 'none', 2000);
+        setTimeout(() => finalPage.style.display = 'flex', 1500); // задержка в 1.5 секунды при отрисовке финальной странички
+        setTimeout(() => gamePage.style.display = 'none', 1500);
     }
+}
+
+// Начать квиз заново:
+function repeatQuiz(e) {
+    let target = e.target;
+
+    if (target.className != 'final-page__btn') {
+        return;
+    }
+
+    let startPage = document.querySelector('.start-page'); // скрыть стартовую страницу
+    startPage.style.display = 'flex';
+
+    let finalPage = document.querySelector('.final-page');
+    finalPage.style.display = 'none';
+
+    correctAnswerCounter = 0; // обнуление счетчика правильных ответов
 }
 
 
@@ -266,6 +283,10 @@ function playQuizGame(e) {
 
     // Концовка игры (победа) ^_^ :
     document.querySelector('.counter-and-btn-container__confirm-answer-btn').addEventListener('click', endOfQuizWin);
+
+    // Начать квиз заново:
+    document.addEventListener('click', repeatQuiz);
     
 }
+
 document.addEventListener('click', playQuizGame);

@@ -12,7 +12,7 @@ body {
 /* ---------------------------- Стартовая страница ---------------------------- */
 .start-page {
     /* width: 700px; убрано, чтоб сделать адаптивный дизайн */
-    max-width: 730px;
+    max-width: 650px;
     min-width: 270px;
     margin: auto;
     padding: 1.5rem;
@@ -62,7 +62,7 @@ body {
 .game-question-page { /* одинаковые стили с ".start-page" */
     display: none; /* изначально меню квиза спрятано */
     /* width: 700px; */
-    max-width: 600px;
+    max-width: 650px;
     min-width: 270px;
     margin: auto;
     padding: 1.5rem;    
@@ -90,28 +90,33 @@ body {
 }
 
 .game-question-page__answers {
-    display: flex;    
+    position: relative; /* позиционирование для отображения тултипа */
+    display: flex;
     gap: 0.5rem;
     padding: 1rem;
+}
+
+.game-question-page__answers:hover > .answers-body__tooltip {
+    display: block;
 }
 
 .answers-body-row {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    color: white;
+    gap: 0.5rem;    
     font-size: 1.3rem;
-    color: rgb(212, 212, 212);    
+    color: rgb(212, 212, 212);
 }
 
 .answers-body-row__answer {   
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1.5rem;
+    padding: 1.2rem;
     border: 2px solid rgb(71, 114, 194);
     border-radius: 0.5rem;
     /* text-align: center; */
+    user-select: none;
 
 }
 
@@ -119,6 +124,20 @@ body {
     cursor: pointer;
     background: rgb(206, 206, 3);
     color: black;
+}
+
+.answers-body__tooltip {
+    position: absolute;
+    display: none;
+    padding: 0.5rem;
+    top: 170px;
+    left: 0px;
+    color: black;
+    font-size: 1.3rem;
+    text-align: center;
+    background: rgb(71, 114, 194);
+    border: 2px solid rgb(189, 189, 189);
+    border-radius: 0.3rem;
 }
 
 .answers-body-row__answer:Active {
@@ -131,7 +150,6 @@ body {
     background: rgb(206, 206, 3);
     color: black;
 }
-
 
 .game-question-page__counter-and-btn {    
     display: flex;
@@ -189,7 +207,7 @@ body {
 .final-page {
     display: none; /* изначально меню квиза спрятано */
     /* width: 700px; */
-    max-width: 600px;
+    max-width: 650px;
     min-width: 270px;
     margin: auto;
     padding: 1.5rem;    
@@ -209,4 +227,27 @@ body {
     color: rgb(212, 212, 212);
     text-align: center;
     font-family: "Montserrat", sans-serif;
+}
+
+.final-page__btn { /* стили полностью идентичны стартовой кнопке (за исключением размеров) */
+    width: 150px;
+    height: 50px;
+    font-size: 1rem;
+    background: rgb(71, 114, 194);
+    border: 2px solid rgb(189, 189, 189);
+    font: italic 1rem sans-serif;
+    font-family: "Open Sans", sans-serif;
+    border-radius: 0.3rem;
+    color: rgb(32, 32, 32);
+}
+
+.final-page__btn:hover {
+    cursor: pointer;
+    background: rgb(80, 130, 221);
+}
+
+.final-page__btn:active {
+    cursor: pointer;
+    background: rgb(102, 151, 243);
+    border: 2px solid rgb(218, 218, 218);
 }
