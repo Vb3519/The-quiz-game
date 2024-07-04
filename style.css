@@ -11,7 +11,8 @@ body {
 
 /* ---------------------------- Стартовая страница ---------------------------- */
 .start-page {
-    width: 700px;
+    /* width: 700px; убрано, чтоб сделать адаптивный дизайн */
+    padding: 2rem;
     height: 500px;
     border: 3px solid rgb(71, 114, 194);
     border-radius: 0.5rem;
@@ -57,7 +58,8 @@ body {
 
 .game-question-page { /* одинаковые стили с ".start-page" */
     display: none; /* изначально меню квиза спрятано */
-    width: 700px;
+    /* width: 700px; */
+    padding: 2rem;
     height: 500px;
     border: 3px solid rgb(71, 114, 194);
     border-radius: 0.5rem;
@@ -82,25 +84,29 @@ body {
 }
 
 .game-question-page__answers {
-    display: flex;   
+    display: flex;    
     gap: 0.5rem;
     padding: 1rem;
 }
 
 .answers-body-row {
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
     gap: 0.5rem;
     color: white;
     font-size: 1.3rem;
     color: rgb(212, 212, 212);    
 }
 
-.answers-body-row__answer {
+.answers-body-row__answer {   
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 2rem;
     border: 2px solid rgb(71, 114, 194);
     border-radius: 0.5rem;
-    text-align: center;
+    /* text-align: center; */
+
 }
 
 .answers-body-row__answer:hover {
@@ -165,10 +171,19 @@ body {
     border: 2px solid rgb(218, 218, 218);
 }
 
+/* Указание пользователем неверного ответа (стили) */
+.wrong-answer {
+    background: rgb(219, 144, 5);
+    
+}
+
+
+
 /* ---------------------------- Финальная страница ---------------------------- */
 .final-page {
     display: none; /* изначально меню квиза спрятано */
-    width: 700px;
+    /* width: 700px; */
+    padding: 2rem;
     height: 500px;
     border: 3px solid rgb(71, 114, 194);
     border-radius: 0.5rem;

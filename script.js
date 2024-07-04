@@ -41,7 +41,7 @@ function renderQuizAnswers() {
     Array.from(answersList).forEach( (answer) => {
         // Проверка: количество верных ответов НЕ может быть больше, чем количество вопросов
         if (answersArr.length > correctAnswerCounter) {
-            answer.innerText = answersArr[correctAnswerCounter][pageAnswerCounter];
+            answer.innerText = answersArr[correctAnswerCounter][pageAnswerCounter];            
             pageAnswerCounter++; // здесь счетчик внутри цикла, т.к. нужно заполнить последовательно все 4 элемента.
         }
 
@@ -140,6 +140,76 @@ function checkAnswerCorrectness(e) {
     }
 }
 
+// Анимация, когда пользователь выбрал неверный ответ:
+function wrongAnswerAnimation(e) {
+    let target = e.target;
+
+    if  (!target.classList.contains('counter-and-btn-container__confirm-answer-btn')) {
+        return;
+    }
+
+    let selectedAnswerBtn = document.querySelector('.selected-answer'); // выбранный ответ
+    let quizAnswer = selectedAnswerBtn.innerText;
+
+    /* Здесь, когда идет переключение между игровыми страницами (и пользователь еще не выбрал ответ и, соответственно,
+    отсутствует класс ".selected-answer" идет ошибка: "Cannot read properties of null (reading 'innerText')" )
+
+    Если перевесить обработчик не на "document", а например на кнопку перехода к следующему вопросу
+    "counter-and-btn-container__confirm-answer-btn", то все работает без ошибки */
+
+    let gamePage = document.querySelector('.game-question-page');
+    
+
+    if (! ((quizAnswer == 'Виктор') // вариант с " || и quizAnswer != 'верный ответ' " - не работает
+        || (quizAnswer == 'Москва')
+        || (quizAnswer == 'Семь')
+        || (quizAnswer == '35')
+        || (quizAnswer == 'JavaScript'))
+       ) {
+        selectedAnswerBtn.style.background = 'rgb(219, 144, 5)'; // цвет фона поля (темно-оранжевый) с ответом при обнаружении неверного ответа;
+
+        // setTimeout(() => selectedWrongAnswer.classList.add('answers-body-row__answer'), 500); При добавлении стандартного класса стилей, элемент НЕ мигает
+        setTimeout(() => selectedAnswerBtn.style.backgroundColor = "rgb(20, 13, 119)", 500); // цвет фона по умолчанию
+        setTimeout(() => selectedAnswerBtn.style.color = "rgb(212, 212, 212)", 500); // цвет текста по умолчанию
+        setTimeout(() => alert('Ответ неверен. Попробуйте выбрать другой'), 1000);
+        setTimeout(() => gamePage.removeAttribute('data-user-selected-answer', 'this one'), 1000);
+        setTimeout(() => selectedAnswerBtn.classList.remove('selected-answer'), 1000);
+        
+        
+        let answers = document.querySelectorAll('.answers-body-row__answer');
+        Array.from(answers).forEach((answer) => {
+            setTimeout(() => answer.removeAttribute('style'), 1000);
+        })
+    }     
+}
+
+// Концовка игры (победа) ^_^ :
+function endOfQuizWin() {
+    let selectedAnswerBtn = document.querySelector('.selected-answer'); // выбранный ответ
+
+    if (!selectedAnswerBtn) {
+        return;
+    }
+
+    let quizAnswer = selectedAnswerBtn.innerText;
+
+    if ( (correctAnswerCounter >= questionsArr.length) && (
+           (quizAnswer == 'Виктор')
+        || (quizAnswer == 'Москва') // а если вопросов в квизе 100 шт., например? Как написать функцию проверки верного ответа
+        || (quizAnswer == 'Семь')
+        || (quizAnswer == '35')
+        || (quizAnswer == 'JavaScript')
+         )
+        ) {
+
+        let gamePage = document.querySelector('.game-question-page');
+        let finalPage = document.querySelector('.final-page');
+
+        setTimeout(() => finalPage.style.display = 'flex', 2000); // задержка в 2 секунды при отрисовке финальной странички
+        setTimeout(() => gamePage.style.display = 'none', 2000);
+    }
+}
+
 
 // ---------------------- Общая Функция Квиза ---------------------- // 
 let correctAnswerCounter = 0; // счетчик пройденных вопросов (правильных ответов); Его как-то можно НЕ использовать в global scope?
@@ -181,36 +251,21 @@ function playQuizGame(e) {
             // document.querySelector('.selected-answer').dataset.userSelectedAnswer // 'this one'
             answer.classList.add('selected-answer');
         })    
-    })
+    })    
 
     // Отмена выбранного ответа (при двойном клике ЛКМ) - нужна подсказка (тултип):
     document.addEventListener('dblclick', removeSelectedAnswer);
 
     // Проверка, выбранного пользователем ответа для перехода к следующему вопросу:
     document.addEventListener('click', checkAnswerCorrectness);
+
+    // Анимация, когда пользователь выбрал неверный ответ:
+    let nextQuestionBtn = document.querySelector('.counter-and-btn-container__confirm-answer-btn'); /* если обработчик повесить на "document"
+    то будет ошибка, смотри описание в теле функции "wrongAnswerAnimation" */
+    nextQuestionBtn.addEventListener('click', wrongAnswerAnimation);
+
+    // Концовка игры (победа) ^_^ :
+    document.querySelector('.counter-and-btn-container__confirm-answer-btn').addEventListener('click', endOfQuizWin);
     
 }
 document.addEventListener('click', playQuizGame);
-
-// Концовка игры (победа) ^_^ :
-document.querySelector('.counter-and-btn-container__confirm-answer-btn').addEventListener('click', function endOfQuiz() {
-    let selectedAnswerBtn = document.querySelector('.selected-answer'); // выбранный ответ
-    let quizAnswer = selectedAnswerBtn.innerText;
-
-    if ( (correctAnswerCounter >= questionsArr.length) && (
-        (quizAnswer == 'Виктор')
-        || (quizAnswer == 'Москва')
-        || (quizAnswer == 'Семь')
-        || (quizAnswer == '35')
-        || (quizAnswer == 'JavaScript')
-    )
-    ) {
-        let finalPage = document.querySelector('.final-page');
-        finalPage.style.display = 'flex';
-
-        let gamePage = document.querySelector('.game-question-page');
-        gamePage.style.display = 'none';
-    }
-})
-
-
