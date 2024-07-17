@@ -268,7 +268,7 @@ function playQuizGame(e) {
             // document.querySelector('.selected-answer').dataset.userSelectedAnswer // 'this one'
             answer.classList.add('selected-answer');
         })    
-    })    
+    })
 
     // Отмена выбранного ответа (при двойном клике ЛКМ) - нужна подсказка (тултип):
     document.addEventListener('dblclick', removeSelectedAnswer);
